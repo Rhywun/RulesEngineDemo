@@ -13,13 +13,4 @@
       <PackageReference Include="RulesEngine" Version="3.5.0" />
     </ItemGroup>
 
-    <ItemGroup>
-      <None Update="Data\Json\Validations.json">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      </None>
-      <None Update="Data\Json\Calculations.json">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      </None>
-    </ItemGroup>
-
 </Project>
