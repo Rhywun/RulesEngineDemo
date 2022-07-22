@@ -1,0 +1,23 @@
+[
+  {
+    "WorkflowName": "Calculations",
+    "Rules": [
+      {
+        "RuleName": "PremiumDiscount",
+        "SuccessEvent": "10",
+        "ErrorMessage": "Does not qualify for a discount",
+        "ErrorType": "Error",
+        "RuleExpressionType": "LambdaExpression",
+        "Expression": "CustomerState == \"NY\"",
+        "Actions": {
+          "OnSuccess": {
+            "Name": "OutputExpression",
+            "Context": {
+              "Expression": "Premium * 0.9"
+            }
+          }
+        }
+      }
+    ]
+  }
+]
