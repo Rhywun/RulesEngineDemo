@@ -4,7 +4,8 @@ namespace RulesEngineDemo.Workflows;
 
 public static class Validations
 {
-    // TODO: Think of an example with "chained rules" (if this rule passes, then run this other rule) - EvaluateRule action
+    // TODO: Think of an example with "chained rules": https://microsoft.github.io/RulesEngine/#evaluaterule
+    // TODO: Think of an example for a "custom action": https://microsoft.github.io/RulesEngine/#custom-actions
 
     public static Workflow Workflow
         => new Workflow
