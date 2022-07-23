@@ -15,7 +15,9 @@ public class ClaimLimitIsNotExceeded
 	}
 
 	[TestMethod]
-	public async Task ValidContract_Pass()
+	[DataRow(400)]
+	[DataRow(500)]
+	public async Task ValidContract_Pass(int claimAmount)
 	{
 		// Arrange
 		var contract = new Contract
@@ -28,13 +30,13 @@ public class ClaimLimitIsNotExceeded
 			ExpirationDate = default,
 			TermMonths = default,
 			ClaimLimit = 500,
-			ClaimAmount = 400, // Valid
+			ClaimAmount = claimAmount, // Valid
 			Premium = default,
 		};
 
 		// Act
 		var param1 = new RuleParameter("contract", contract);
-		var param2 = new RuleParameter("insured", new Insured { State = "NY" });
+		var param2 = new RuleParameter("insured", new Insured { State = default });
 		var results = await _engine.ExecuteAllRulesAsync("Validations", param1, param2);
 		var isSuccess = results.Single(result => result.Rule.RuleName == "ClaimLimitIsNotExceeded")
 		                       .IsSuccess;
@@ -63,7 +65,7 @@ public class ClaimLimitIsNotExceeded
 
 		// Act
 		var param1 = new RuleParameter("contract", contract);
-		var param2 = new RuleParameter("insured", new Insured { State = "NY" });
+		var param2 = new RuleParameter("insured", new Insured { State = default });
 		var results = await _engine.ExecuteAllRulesAsync("Validations", param1, param2);
 		var isSuccess = results.Single(result => result.Rule.RuleName == "ClaimLimitIsNotExceeded")
 		                       .IsSuccess;

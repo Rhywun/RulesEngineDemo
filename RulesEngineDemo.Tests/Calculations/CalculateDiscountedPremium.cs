@@ -49,7 +49,7 @@ public class CalculateDiscountedPremium
 	public async Task InvalidContract_Fail(string state)
 	{
 		// Arrange
-		var param1 = new RuleParameter("contract", null);
+		var param1 = new RuleParameter("contract", default);
 		var param2 = new RuleParameter("insured", new Insured { State = state });
 
 		// Act
