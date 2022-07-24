@@ -79,7 +79,7 @@ public static class Validations
                             Expression = "contract.EffectiveDate.AddMonths(contract.TermMonths).AddDays(5)",
                         },
                     },
-                    Expression = "contract.ExpirationDate > MinimumExpirationDate and contract.ExpirationDate < MaximumExpirationDate",
+                    Expression = "contract.ExpirationDate >= MinimumExpirationDate and contract.ExpirationDate <= MaximumExpirationDate",
                     SuccessEvent = "ExpirationDate is EffectiveDate plus TermMonths +/- 5 days",
                     ErrorMessage = "ExpirationDate must be EffectiveDate plus TermMonths +/- 5 days",
                 },
