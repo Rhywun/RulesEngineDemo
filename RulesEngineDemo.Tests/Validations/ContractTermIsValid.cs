@@ -37,7 +37,7 @@ public class ContractTermIsValid
 
 		// Act
 		var param1 = new RuleParameter("contract", contract);
-		var param2 = new RuleParameter("insured", new Insured { State = "NY" });
+		var param2 = new RuleParameter("insured", new Insured { State = default });
 		var results = await _engine.ExecuteAllRulesAsync("Validations", param1, param2);
 		var isSuccess = results.Single(result => result.Rule.RuleName == "ContractTermIsValid")
 		                       .IsSuccess;
@@ -68,7 +68,7 @@ public class ContractTermIsValid
 
 		// Act
 		var param1 = new RuleParameter("contract", contract);
-		var param2 = new RuleParameter("insured", new Insured { State = "NY" });
+		var param2 = new RuleParameter("insured", new Insured { State = default });
 		var results = await _engine.ExecuteAllRulesAsync("Validations", param1, param2);
 		var isSuccess = results.Single(result => result.Rule.RuleName == "ContractTermIsValid")
 		                       .IsSuccess;
