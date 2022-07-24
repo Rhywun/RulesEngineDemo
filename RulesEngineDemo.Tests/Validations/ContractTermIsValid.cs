@@ -29,7 +29,7 @@ public class ContractTermIsValid
 			InsuranceType = default,
 			EffectiveDate = new DateTime(2022, 2, 1),
 			ExpirationDate = new DateTime(year, month, date), // Valid
-			TermMonths = default,
+			TermMonths = 12,
 			ClaimLimit = default,
 			ClaimAmount = default,
 			Premium = default,
@@ -60,7 +60,7 @@ public class ContractTermIsValid
 			InsuranceType = default,
 			EffectiveDate = new DateTime(2022, 2, 1),
 			ExpirationDate = new DateTime(year, month, date), // Invalid
-			TermMonths = default,
+			TermMonths = 12,
 			ClaimLimit = default,
 			ClaimAmount = default,
 			Premium = default,
