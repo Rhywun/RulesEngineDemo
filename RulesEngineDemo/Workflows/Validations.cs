@@ -83,6 +83,15 @@ public static class Validations
                     SuccessEvent = "ExpirationDate is EffectiveDate plus TermMonths +/- 5 days",
                     ErrorMessage = "ExpirationDate must be EffectiveDate plus TermMonths +/- 5 days",
                 },
+                new Rule
+                {
+                    RuleName = "RequireClientName",
+                    Properties = new() { ["Description"] = "ClientName is required" },
+                    Enabled = true,
+                    Expression = "contract.ClientName != null",
+                    SuccessEvent = "ClientName is present",
+                    ErrorMessage = "ClientName is required",
+                },
             },
         };
 }
