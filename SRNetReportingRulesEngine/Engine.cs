@@ -43,7 +43,7 @@ namespace SRNetReportingRulesEngine
 			_engine = new RulesEngine.RulesEngine(workflows);
 		}
 
-		public async Task<List<Result>> RunWorkflow(string workflow, RuleParameter[] ruleParams)
+		public async Task<List<RuleResult>> RunWorkflow(string workflow, RuleParameter[] ruleParams)
 		{
 			var results = await _engine.ExecuteAllRulesAsync(workflow, ruleParams);
 

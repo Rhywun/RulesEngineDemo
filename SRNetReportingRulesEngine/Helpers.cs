@@ -9,9 +9,9 @@ namespace SRNetReportingRulesEngine
 {
     internal static class Helpers
 	{
-		internal static List<Result> GetResults(List<RuleResultTree> results)
+		internal static List<RuleResult> GetResults(List<RuleResultTree> results)
 		{
-			return results.Select(result => new Result
+			return results.Select(result => new RuleResult
 			{
 				RuleName = result.Rule.RuleName,
 				IsSuccess = result.IsSuccess,

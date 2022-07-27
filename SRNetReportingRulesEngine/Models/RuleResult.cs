@@ -2,7 +2,7 @@ using System.Text;
 
 namespace SRNetReportingRulesEngine.Models
 {
-    public class Result
+    public class RuleResult
     {
         public string RuleName { get; set; }
         public bool IsSuccess { get; set; }
