@@ -1,15 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.Extensions.Logging;
 using RulesEngine.Models;
+using SRNetReportingRulesEngine.Models;
 using static SRNetReportingRulesEngine.Helpers;
 
 namespace SRNetReportingRulesEngine
 {
-	public class Engine
+    public class Engine
 	{
 		private static RulesEngineContext _db;
 		private static RulesEngine.RulesEngine _engine;
@@ -41,12 +43,12 @@ namespace SRNetReportingRulesEngine
 			_engine = new RulesEngine.RulesEngine(workflows);
 		}
 
-		public async void RunWorkflow(string workflow, RuleParameter[] ruleParams)
+		public async Task<List<Result>> RunWorkflow(string workflow, RuleParameter[] ruleParams)
 		{
 			var results = await _engine.ExecuteAllRulesAsync(workflow, ruleParams);
-			
-			// TODO: Return a success/fail and a message, instead of printing them to the console
-			ReportResults(results);
+
+			// ReportResults(results);
+			return GetResults(results);
 		}
 	}
 }
