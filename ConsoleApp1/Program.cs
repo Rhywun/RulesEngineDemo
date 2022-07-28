@@ -5,7 +5,7 @@ using RulesEngine.Models;
 
 namespace ConsoleApp1
 {
-	class Program
+	internal static class Program
 	{
 		public static void Main()
 		{
@@ -34,10 +34,10 @@ namespace ConsoleApp1
 			var param2 = new RuleParameter("insured", new Insured { State = "NY" });
 
 			var results1 = await engine.RunWorkflow("Validations", new[] { param1, param2 });
-			results1.ForEach(result => Console.WriteLine(result));
+			results1.ForEach(Console.WriteLine);
 
 			var results2 = await engine.RunWorkflow("Calculations", new[] { param1, param2 });
-			results2.ForEach(result => Console.WriteLine(result));
+			results2.ForEach(Console.WriteLine);
 		}
 	}
 }
