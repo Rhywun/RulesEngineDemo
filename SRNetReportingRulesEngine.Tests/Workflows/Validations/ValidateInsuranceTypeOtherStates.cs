@@ -9,14 +9,6 @@ namespace SRNetReportingRulesEngine.Tests.Workflows.Validations
 	[TestClass]
 	public class ValidateInsuranceTypeOtherStates
 	{
-		private static Engine _engine;
-
-		[ClassInitialize]
-		public static void ClassInitialize(TestContext context)
-		{
-			_engine = new Engine();
-		}
-
 		[TestMethod]
 		[DataRow("ETC")]
 		[DataRow("FD")]
@@ -41,7 +33,7 @@ namespace SRNetReportingRulesEngine.Tests.Workflows.Validations
 			var param2 = new RuleParameter("insured", new Insured { State = "FL" });
 
 			// Act
-			var results = await _engine.RunWorkflow("Validations", new[] { param1, param2 });
+			var results = await Engine.RunWorkflow("Validations", new[] { param1, param2 });
 			bool isSuccess = results.Single(result => result.RuleName == "ValidateInsuranceTypeOtherStates")
 			                        .IsSuccess;
 
@@ -70,7 +62,7 @@ namespace SRNetReportingRulesEngine.Tests.Workflows.Validations
 			var param2 = new RuleParameter("insured", new Insured { State = "FL" });
 
 			// Act
-			var results = await _engine.RunWorkflow("Validations", new[] { param1, param2 });
+			var results = await Engine.RunWorkflow("Validations", new[] { param1, param2 });
 			bool isSuccess = results.Single(result => result.RuleName == "ValidateInsuranceTypeOtherStates")
 			                        .IsSuccess;
 

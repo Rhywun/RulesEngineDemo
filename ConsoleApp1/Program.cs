@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using ConsoleApp1.Models;
 using RulesEngine.Models;
+using SRNetReportingRulesEngine;
 
 namespace ConsoleApp1
 {
@@ -28,15 +29,13 @@ namespace ConsoleApp1
 				Premium = 999,
 			};
 			
-			var engine = new SRNetReportingRulesEngine.Engine();
-
 			var param1 = new RuleParameter("contract", contract);
 			var param2 = new RuleParameter("insured", new Insured { State = "NY" });
 
-			var results1 = await engine.RunWorkflow("Validations", new[] { param1, param2 });
+			var results1 = await Engine.RunWorkflow("Validations", new[] { param1, param2 });
 			results1.ForEach(Console.WriteLine);
 
-			var results2 = await engine.RunWorkflow("Calculations", new[] { param1, param2 });
+			var results2 = await Engine.RunWorkflow("Calculations", new[] { param1, param2 });
 			results2.ForEach(Console.WriteLine);
 		}
 	}

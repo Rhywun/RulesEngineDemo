@@ -9,14 +9,6 @@ namespace SRNetReportingRulesEngine.Tests.Workflows.Calculations
 	[TestClass]
 	public class CalculateDiscountedPremium
 	{
-		private static Engine _engine;
-
-		[ClassInitialize]
-		public static void ClassInitialize(TestContext context)
-		{
-			_engine = new Engine();
-		}
-
 		[TestMethod]
 		public async Task ValidContract_Pass()
 		{
@@ -38,7 +30,7 @@ namespace SRNetReportingRulesEngine.Tests.Workflows.Calculations
 			var param2 = new RuleParameter("insured", new Insured { State = "NY" });
 
 			// Act
-			var results = await _engine.RunWorkflow("Calculations", new[] { param1, param2 });
+			var results = await Engine.RunWorkflow("Calculations", new[] { param1, param2 });
 			var result = results.Single(result => result.RuleName == "CalculateDiscountedPremium");
 
 			// Assert
@@ -56,7 +48,7 @@ namespace SRNetReportingRulesEngine.Tests.Workflows.Calculations
 			var param2 = new RuleParameter("insured", new Insured { State = state });
 
 			// Act
-			var results = await _engine.RunWorkflow("Calculations", new[] { param1, param2 });
+			var results = await Engine.RunWorkflow("Calculations", new[] { param1, param2 });
 			var result = results.Single(result => result.RuleName == "CalculateDiscountedPremium");
 
 			// Assert

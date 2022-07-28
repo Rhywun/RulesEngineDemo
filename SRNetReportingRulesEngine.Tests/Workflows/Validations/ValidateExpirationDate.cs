@@ -10,14 +10,6 @@ namespace SRNetReportingRulesEngine.Tests.Workflows.Validations
 	[TestClass]
 	public class ValidateExpirationDate
 	{
-		private static Engine _engine;
-
-		[ClassInitialize]
-		public static void ClassInitialize(TestContext context)
-		{
-			_engine = new Engine();
-		}
-
 		[TestMethod]
 		[DataRow(2023, 2, 1)]
 		[DataRow(2023, 1, 30)]
@@ -42,7 +34,7 @@ namespace SRNetReportingRulesEngine.Tests.Workflows.Validations
 			// Act
 			var param1 = new RuleParameter("contract", contract);
 			var param2 = new RuleParameter("insured", new Insured { State = default });
-			var results = await _engine.RunWorkflow("Validations", new[] { param1, param2 });
+			var results = await Engine.RunWorkflow("Validations", new[] { param1, param2 });
 			bool isSuccess = results.Single(result => result.RuleName == "ValidateExpirationDate")
 			                        .IsSuccess;
 
@@ -73,7 +65,7 @@ namespace SRNetReportingRulesEngine.Tests.Workflows.Validations
 			// Act
 			var param1 = new RuleParameter("contract", contract);
 			var param2 = new RuleParameter("insured", new Insured { State = default });
-			var results = await _engine.RunWorkflow("Validations", new[] { param1, param2 });
+			var results = await Engine.RunWorkflow("Validations", new[] { param1, param2 });
 			bool isSuccess = results.Single(result => result.RuleName == "ValidateExpirationDate")
 			                        .IsSuccess;
 
