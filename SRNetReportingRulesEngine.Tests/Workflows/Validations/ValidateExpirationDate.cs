@@ -30,10 +30,10 @@ namespace SRNetReportingRulesEngine.Tests.Workflows.Validations
 				ClaimAmount = default,
 				Premium = default,
 			};
-
-			// Act
 			var param1 = new RuleParameter("contract", contract);
 			var param2 = new RuleParameter("insured", new Insured { State = default });
+
+			// Act
 			var results = await Engine.RunWorkflow("Validations", new[] { param1, param2 });
 			bool isSuccess = results.Single(result => result.RuleName == "ValidateExpirationDate")
 			                        .IsSuccess;
@@ -61,10 +61,10 @@ namespace SRNetReportingRulesEngine.Tests.Workflows.Validations
 				ClaimAmount = default,
 				Premium = default,
 			};
-
-			// Act
 			var param1 = new RuleParameter("contract", contract);
 			var param2 = new RuleParameter("insured", new Insured { State = default });
+
+			// Act
 			var results = await Engine.RunWorkflow("Validations", new[] { param1, param2 });
 			bool isSuccess = results.Single(result => result.RuleName == "ValidateExpirationDate")
 			                        .IsSuccess;
